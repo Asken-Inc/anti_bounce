@@ -1,0 +1,18 @@
+{
+    "name": "Uluru/AntiBounce",
+    "description": "AntiBounce plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0",
+        "aws/aws-php-sns-message-validator": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "AntiBounce\\": "src"
+        }
+    },
+}
