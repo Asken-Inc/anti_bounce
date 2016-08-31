@@ -1,7 +1,6 @@
 <?php
-namespace AntiBounce\Model\Table;
+namespace Uluru\AntiBounce\Model\Table;
 
-use AntiBounce\Model\Entity\BounceLog;
 use Aws\Sns\Message;
 use Cake\Core\Configure;
 use Cake\Log\Log;
@@ -39,8 +38,9 @@ class BounceLogsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo("AntiBounce.Users", [
+        $this->belongsTo("Users", [
             'foreignKey' => "target_id",
+            'className' => "Uluru/AntiBounce.Users",
             'bindingKey' => $this->config['settings']['email']['key']
         ]);
     }

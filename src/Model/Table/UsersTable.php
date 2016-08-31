@@ -1,5 +1,5 @@
 <?php
-namespace AntiBounce\Model\Table;
+namespace Uluru\AntiBounce\Model\Table;
 
 use Cake\Core\Configure;
 use Cake\Datasource\Exception\RecordNotFoundException;
@@ -45,6 +45,7 @@ class UsersTable extends Table
         $this->addBehavior('Timestamp');
         $this->hasMany("BounceLogs", [
             "foreignKey" => "target_id",
+            "className" => "Uluru/AntiBounce.BounceLogs",
             "bindingKey" => $this->config['settings']['email']['key']
         ]);
     }

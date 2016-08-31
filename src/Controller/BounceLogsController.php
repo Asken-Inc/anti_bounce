@@ -1,5 +1,5 @@
 <?php
-namespace AntiBounce\Controller;
+namespace Uluru\AntiBounce\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;

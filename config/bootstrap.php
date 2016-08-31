@@ -1,7 +1,7 @@
 <?php
 use Cake\Core\Configure;
 
-Configure::load('AntiBounce.setting');
+Configure::load('Uluru/AntiBounce.setting');
 collection((array)Configure::read('AntiBounce.config'))->each(function ($file) {
     Configure::load($file);
 });
