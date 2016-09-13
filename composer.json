@@ -2,6 +2,12 @@
     "name": "uluru/antibounce",
     "description": "AntiBounce plugin for CakePHP",
     "type": "cakephp-plugin",
+    "repositories": [
+            {
+                "type": "vcs",
+                "url": "https://github.com/Asken-Inc/anti_bounce/"
+            }
+    ],
     "keywords": [
         "cakephp",
         "aws",
