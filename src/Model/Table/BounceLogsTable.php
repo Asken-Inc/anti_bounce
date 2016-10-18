@@ -107,7 +107,7 @@ class BounceLogsTable extends Table
                     $this->Users->updateFields($targetEmail);
                 }
             } catch (\Exception $e) {
-                Log::write(LOG_ERR, $e->getTraceAsString());
+                Log::write(LOG_WARNING, $e->getTraceAsString());
                 return false;
             }
             return true;
