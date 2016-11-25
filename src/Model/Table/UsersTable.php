@@ -63,21 +63,23 @@ class UsersTable extends Table
         }
 
         $key = $this->find()
-            ->where([$setting['mailField'] => $email])
-            ->firstOrFail()
+            ->where([
+                $setting['mailField'] => $email,
+                $setting['key'] . " is not null"
+            ])
+            ->first()
             ->{$setting['key']};
 
         return $key;
     }
 
     /**
-     * @param $email
+     * @param $key
      * @return bool|\Cake\Datasource\EntityInterface|mixed
      * @throws RecordNotFoundException|\Exception
      */
-    public function updateFields($email)
+    public function updateFields($key)
     {
-        $key = $this->getKeyByEmail($email);
         $Model = TableRegistry::get($this->config['settings']['updateFields']['model']);
 
         $entity = $Model->get($key);
