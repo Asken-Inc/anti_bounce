@@ -88,23 +88,23 @@ class BounceLogsTable extends Table
 
                 /** @var BounceLog $bounceLogs */
                 $bounceLogs = $this->newEntity([
-                    "target_id" => $key,
+                    'target_id' => $key,
+                    'mail' => $targetEmail,
                     'message' => $message['Message'],
                 ]);
-
                 if ($bounceLogs->errors()) {
                     throw new \Exception('Error: Failed insertLog(). %s = %d');
                 }
-
                 $this->save($bounceLogs, ['atomic' => false]);
 
                 // Update mail sending setting
-                $count = $this->find()
-                    ->where(["target_id" => $key])
-                    ->count();
-
-                if ($settings['stopSending'] && $count > $settings['bounceLimit']) {
-                    $this->Users->updateFields($targetEmail);
+                if ($settings['stopSending'] && !empty($key)) {
+                    $count = $this->find()
+                        ->where(["target_id" => $key])
+                        ->count();
+                    if ($count > $settings['bounceLimit']) {
+                        $this->Users->updateFields($key);
+                    }
                 }
             } catch (\Exception $e) {
                 Log::write(LOG_WARNING, $e->getTraceAsString());
